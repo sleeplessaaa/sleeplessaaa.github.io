@@ -259,192 +259,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/DAT278x-Note/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Melody Chen(sleeplessaaa)">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/20/DAT278x-Note/" itemprop="url">Mining Knowledge Graphs from Text</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-20T22:02:10-08:00">
-                2019-02-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>##Part 1 Knowledge Graph Primer</p>
-<blockquote>
-<ol>
-<li>What is a Knowledge Graph?</li>
-</ol>
-</blockquote>
-<p>Knowledge Graph = Entities + Relationships + Attributes</p>
-<p><strong>Popular Knowledge Graphs(General)</strong>: Google Knowledge Graph, Microsofy Satori Knowledge Graph<br><strong>Domain Specific Knowledge Graphs</strong>: Microsoft Academic Graph, Linkedin Economic Graph, Common Sense Knowledge Graph</p>
-<blockquote>
-<ol start="2">
-<li>Why Knowledge Graph Important? </li>
-</ol>
-</blockquote>
-<p><strong>For Humans:</strong></p>
-<ul>
-<li>Help organize world’s information</li>
-<li>Combat Information Overload</li>
-<li>Easier for Exploration via Clear Structure</li>
-<li>Tool for Supporting Business Decisions</li>
-</ul>
-<p><strong>For AIs:</strong></p>
-<ul>
-<li>Key ingredient for many AI tasks</li>
-<li>Bridge from data to human semantics</li>
-<li>Use decades of work on graph analysis</li>
-</ul>
-<p><strong>Applications:</strong></p>
-<ul>
-<li>QA/Agents</li>
-<li>Decision Support</li>
-<li>Fueling Discovery</li>
-</ul>
-<blockquote>
-<ol start="3">
-<li>Where Do Knowledge Graphs Come From?</li>
-</ol>
-</blockquote>
-<ul>
-<li>Structured Text : Wikipedia Infoboxes, tables, databases, social nets</li>
-<li>Unstructured Text : WWW, news, social media, reference articles</li>
-<li>Images</li>
-<li>Video : YouTube, video feeds</li>
-</ul>
-<blockquote>
-<ol start="4">
-<li>Knowledge Representation Choices</li>
-</ol>
-</blockquote>
-<p>1) Most knowledge graph implementations use RDF triples (Resource Description Framework)</p>
-<blockquote>
-<p>RDF是一种处理元数据的应用，元数据是指描述数据的数据或者说是描述信息的信息<br>eg: 书的内容是书的数据，作者的名字、出版社、地址是书的元数据。<br>RDF的基本构造为陈述(statement)了一个资源-资源具有的属性(attribute)-属性值(value) (即，subject-predicate/relation-object)的三元组。它表现的是一个数据模型。<br>每一个被描述的资源拥有一个统一资源标识符(URI)。URI可以是URL或者是其他诸如电话号码、国际标准图书编号ISBN和地理坐标等能唯一标识对象的符号。<br>属性同样也需要用URI来标识，防止同义词造成的混乱。</p>
-</blockquote>
-<p>2) ABox (assertions) versus TBox (terminology)</p>
-<blockquote>
-<p>Tbox是关于概念术语的断言 ，Abox是关于个体的断言<br>Tbox声明概念和角色间的包含关系，而Abox是关于个体的实例断言集合，断言包括声明个体是某概念的实例，以及个体之间的二元关系。</p>
-</blockquote>
-<p>3) Common ontological primitives</p>
-<ul>
-<li>rdfs:domain, rdfs:range, rdf:type, rdfs:subClassOf, rdfs:subPropertyOf, …</li>
-<li>owl:inverseOf, owl:TransitiveProperty, owl:FunctionalProperty, …</li>
-</ul>
-<blockquote>
-<p>RDF是领域无关的，而使用RDFS(RDF Schema)可以定义应用领域所使用的术语和概念。<br>但是无论是RDF或是RDFS都只能表示二元谓词（连接两个客体的谓词就叫二元谓词），不足以支持web上的复杂应用，因此W3C又发展了Web本体语言(OWL)，OWL是RDF的扩张，有相同的语法结构，可以定义词汇之间的关系，类与类的关系，属性与属性之间的关系等等。</p>
-</blockquote>
-<p>4) Semantic Web<br>Standards for defining and exchanging knowledge.<br>Annotated data provide critical resource for automation<br><code>Major weakness: annotate everything?</code><br>被标注的数据可以为自动化的一些操作提供关键的资源，但是这一点也是它的弱点所在，对于大量的不标准的语义表达，难道要标注所有数据吗。</p>
-<p>5)  Information Extraction from Text (will be illustrated in Part 2)<br>Answer to the knowledge acquisition bottleneck<br><code>Many challenges:</code><br>chunking, polysemy/word sense disambiguation (多义词) , entity coreference , relational extraction</p>
-<p>Ref: <a href="https://zhuanlan.zhihu.com/p/29848125" target="_blank" rel="noopener">【ReadingNotes】知识图谱导学 Knowledge Graph Tutorial - Part 1</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/19/github/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -517,7 +331,7 @@
         
           
             <p>Refer: <a href="https://zhuanlan.zhihu.com/p/30044692" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/30044692</a></p>
-<p>###1. Git原理<br><img src="quiver-image-url/CFE3F5807995818C7E65935B88711E5E.jpg =720x209" alt="IMAGE"><br>workspace: 工作区<br>Index/Stage: 暂存区<br>Repository：仓库区（或本地仓库）<br>Remote：远程仓库</p>
+<p>###1. Git原理<br>workspace: 工作区<br>Index/Stage: 暂存区<br>Repository：仓库区（或本地仓库）<br>Remote：远程仓库</p>
 <p>###2. SVN和Git的区别？<br>SVN： 集中式版本控制系统，版本库集中放在中央服务器。<br>Git: 分布式版本控制系统，没有中央服务器。</p>
 <p>###3. 操作</p>
 <p>####一、创建版本库repository<br>版本库又名仓库，可以简单的理解一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改，删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻还可以将文件”还原”。<br>git init 把指定目录变成git可以管理的仓库</p>
@@ -867,7 +681,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -880,7 +694,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
