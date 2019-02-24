@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="c#," />
+  <meta name="keywords" content="Knowledge Graph," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Refer: Microsoft doc 声明和使用变量字符串文本以 $ 字符开头，后接左双引号字符。 $ 符号和引号字符之间不能有空格。 则可以在大括号之间的字符串内包括变量。 如： Console.WriteLine($”Hello {aFriend}”); Console.WriteLine($”The name {firstFriend} has {firstFriend.Length}">
-<meta name="keywords" content="c#">
+<meta name="description" content="Part 1 Knowledge Graph Primer  What is a Knowledge Graph?   Knowledge Graph = Entities + Relationships + Attributes Popular Knowledge Graphs(General): Google Knowledge Graph, Microsofy Satori Knowledg">
+<meta name="keywords" content="Knowledge Graph">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c#学习笔记 - 1">
-<meta property="og:url" content="http://yoursite.com/2019/02/09/c-学习-1/index.html">
+<meta property="og:title" content="Reading Notes1-Mining Knowledge Graphs from Text">
+<meta property="og:url" content="http://yoursite.com/2019/02/20/KnowledgeGraph-Note1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Refer: Microsoft doc 声明和使用变量字符串文本以 $ 字符开头，后接左双引号字符。 $ 符号和引号字符之间不能有空格。 则可以在大括号之间的字符串内包括变量。 如： Console.WriteLine($”Hello {aFriend}”); Console.WriteLine($”The name {firstFriend} has {firstFriend.Length}">
+<meta property="og:description" content="Part 1 Knowledge Graph Primer  What is a Knowledge Graph?   Knowledge Graph = Entities + Relationships + Attributes Popular Knowledge Graphs(General): Google Knowledge Graph, Microsofy Satori Knowledg">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-02-19T07:32:18.488Z">
+<meta property="og:updated_time" content="2019-02-23T23:00:15.270Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="c#学习笔记 - 1">
-<meta name="twitter:description" content="Refer: Microsoft doc 声明和使用变量字符串文本以 $ 字符开头，后接左双引号字符。 $ 符号和引号字符之间不能有空格。 则可以在大括号之间的字符串内包括变量。 如： Console.WriteLine($”Hello {aFriend}”); Console.WriteLine($”The name {firstFriend} has {firstFriend.Length}">
+<meta name="twitter:title" content="Reading Notes1-Mining Knowledge Graphs from Text">
+<meta name="twitter:description" content="Part 1 Knowledge Graph Primer  What is a Knowledge Graph?   Knowledge Graph = Entities + Relationships + Attributes Popular Knowledge Graphs(General): Google Knowledge Graph, Microsofy Satori Knowledg">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/09/c-学习-1/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/02/20/KnowledgeGraph-Note1/"/>
 
 
 
 
 
-  <title>c#学习笔记 - 1 | Hexo</title>
+  <title>Reading Notes1-Mining Knowledge Graphs from Text | Hexo</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/09/c-学习-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/KnowledgeGraph-Note1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Melody Chen(sleeplessaaa)">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">c#学习笔记 - 1</h1>
+          <h1 class="post-title" itemprop="name headline">Reading Notes1-Mining Knowledge Graphs from Text</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-09T10:25:02-08:00">
-                2019-02-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-20T22:02:10-08:00">
+                2019-02-20
               </time>
             
 
@@ -330,18 +330,72 @@
       
 
       
-        <p>Refer: Microsoft doc</p>
-<h4 id="声明和使用变量"><a href="#声明和使用变量" class="headerlink" title="声明和使用变量"></a>声明和使用变量</h4><p>字符串文本以 <code>$</code> 字符开头，后接左双引号字符。 <code>$</code> 符号和引号字符之间不能有空格。 则可以在大括号之间的字符串内包括变量。</p>
-<p>如： Console.WriteLine($”Hello {aFriend}”);</p>
-<p>Console.WriteLine($”The name {firstFriend} has {firstFriend.Length} letters.”);</p>
-<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>Trim(), TrimStart(), TrimEnd(), 剪裁前导或尾随空格</p>
-<p>Replace(): 搜索子字符串，替换其他文本</p>
-<p>大小写：ToUpper(), ToLower()</p>
-<p>搜索字符串： Contains(), StartsWith(), EndsWith()</p>
-<h4 id="整数运算限值"><a href="#整数运算限值" class="headerlink" title="整数运算限值"></a>整数运算限值</h4><p>int max = int.MaxValue;<br>int min = int.MinValue;</p>
-<p>int what = max + 3;<br>Console.WriteLine($”An example of overflow: {what}”);</p>
-<p>=&gt; 答案非常接近最小（负）整数。 与 <code>min + 2</code> 相同。 加法运算会让整数溢出允许的值。 答案是一个非常大的负数，因为溢出从最大整数值覆盖回最小整数值。</p>
-<h4 id="双精度类型和固定点类型"><a href="#双精度类型和固定点类型" class="headerlink" title="双精度类型和固定点类型"></a>双精度类型和固定点类型</h4><p> <code>double</code> 范围比int大，<code>decimal</code> 类型的范围较小，但精度高于 <code>double</code>。 “固定点”一词意味着，十进制小数点（或二进制小数点）不会移动。 </p>
+        <h2 id="Part-1-Knowledge-Graph-Primer"><a href="#Part-1-Knowledge-Graph-Primer" class="headerlink" title="Part 1 Knowledge Graph Primer"></a>Part 1 Knowledge Graph Primer</h2><blockquote>
+<ol>
+<li>What is a Knowledge Graph?</li>
+</ol>
+</blockquote>
+<p>Knowledge Graph = Entities + Relationships + Attributes</p>
+<p><strong>Popular Knowledge Graphs(General)</strong>: Google Knowledge Graph, Microsofy Satori Knowledge Graph<br><strong>Domain Specific Knowledge Graphs</strong>: Microsoft Academic Graph, Linkedin Economic Graph, Common Sense Knowledge Graph</p>
+<blockquote>
+<ol start="2">
+<li>Why Knowledge Graph Important? </li>
+</ol>
+</blockquote>
+<p><strong>For Humans:</strong></p>
+<ul>
+<li>Help organize world’s information</li>
+<li>Combat Information Overload</li>
+<li>Easier for Exploration via Clear Structure</li>
+<li>Tool for Supporting Business Decisions</li>
+</ul>
+<p><strong>For AIs:</strong></p>
+<ul>
+<li>Key ingredient for many AI tasks</li>
+<li>Bridge from data to human semantics</li>
+<li>Use decades of work on graph analysis</li>
+</ul>
+<p><strong>Applications:</strong></p>
+<ul>
+<li>QA/Agents</li>
+<li>Decision Support</li>
+<li>Fueling Discovery</li>
+</ul>
+<blockquote>
+<ol start="3">
+<li>Where Do Knowledge Graphs Come From?</li>
+</ol>
+</blockquote>
+<ul>
+<li>Structured Text : Wikipedia Infoboxes, tables, databases, social nets</li>
+<li>Unstructured Text : WWW, news, social media, reference articles</li>
+<li>Images</li>
+<li>Video : YouTube, video feeds</li>
+</ul>
+<blockquote>
+<ol start="4">
+<li>Knowledge Representation Choices</li>
+</ol>
+</blockquote>
+<p>1) Most knowledge graph implementations use RDF triples (Resource Description Framework)</p>
+<blockquote>
+<p>RDF是一种处理元数据的应用，元数据是指描述数据的数据或者说是描述信息的信息<br>eg: 书的内容是书的数据，作者的名字、出版社、地址是书的元数据。<br>RDF的基本构造为陈述(statement)了一个资源-资源具有的属性(attribute)-属性值(value) (即，subject-predicate/relation-object)的三元组。它表现的是一个数据模型。<br>每一个被描述的资源拥有一个统一资源标识符(URI)。URI可以是URL或者是其他诸如电话号码、国际标准图书编号ISBN和地理坐标等能唯一标识对象的符号。<br>属性同样也需要用URI来标识，防止同义词造成的混乱。</p>
+</blockquote>
+<p>2) ABox (assertions) versus TBox (terminology)</p>
+<blockquote>
+<p>Tbox是关于概念术语的断言 ，Abox是关于个体的断言<br>Tbox声明概念和角色间的包含关系，而Abox是关于个体的实例断言集合，断言包括声明个体是某概念的实例，以及个体之间的二元关系。</p>
+</blockquote>
+<p>3) Common ontological primitives</p>
+<ul>
+<li>rdfs:domain, rdfs:range, rdf:type, rdfs:subClassOf, rdfs:subPropertyOf, …</li>
+<li>owl:inverseOf, owl:TransitiveProperty, owl:FunctionalProperty, …</li>
+</ul>
+<blockquote>
+<p>RDF是领域无关的，而使用RDFS(RDF Schema)可以定义应用领域所使用的术语和概念。<br>但是无论是RDF或是RDFS都只能表示二元谓词（连接两个客体的谓词就叫二元谓词），不足以支持web上的复杂应用，因此W3C又发展了Web本体语言(OWL)，OWL是RDF的扩张，有相同的语法结构，可以定义词汇之间的关系，类与类的关系，属性与属性之间的关系等等。</p>
+</blockquote>
+<p>4) Semantic Web<br>Standards for defining and exchanging knowledge.<br>Annotated data provide critical resource for automation<br><code>Major weakness: annotate everything?</code><br>被标注的数据可以为自动化的一些操作提供关键的资源，但是这一点也是它的弱点所在，对于大量的不标准的语义表达，难道要标注所有数据吗。</p>
+<p>5)  Information Extraction from Text (will be illustrated in Part 2)<br>Answer to the knowledge acquisition bottleneck<br><code>Many challenges:</code><br>chunking, polysemy/word sense disambiguation (多义词) , entity coreference , relational extraction</p>
+<p>Ref: <a href="https://zhuanlan.zhihu.com/p/29848125" target="_blank" rel="noopener">【ReadingNotes】知识图谱导学 Knowledge Graph Tutorial - Part 1</a></p>
 
       
     </div>
@@ -359,7 +413,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/c/" rel="tag"># c#</a>
+            <a href="/tags/Knowledge-Graph/" rel="tag"># Knowledge Graph</a>
           
         </div>
       
@@ -372,8 +426,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/26/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/02/19/github/" rel="next" title="git">
+                <i class="fa fa-chevron-left"></i> git
               </a>
             
           </div>
@@ -382,8 +436,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/19/github/" rel="prev" title="git">
-                git <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/23/KnowledgeGraph-Note2/" rel="prev" title="Reading Notes1-Mining Knowledge Graphs from Text">
+                Reading Notes1-Mining Knowledge Graphs from Text <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -507,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明和使用变量"><span class="nav-number">1.</span> <span class="nav-text">声明和使用变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串"><span class="nav-number">2.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#整数运算限值"><span class="nav-number">3.</span> <span class="nav-text">整数运算限值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双精度类型和固定点类型"><span class="nav-number">4.</span> <span class="nav-text">双精度类型和固定点类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-1-Knowledge-Graph-Primer"><span class="nav-number">1.</span> <span class="nav-text">Part 1 Knowledge Graph Primer</span></a></li></ol></div>
             
 
           </div>

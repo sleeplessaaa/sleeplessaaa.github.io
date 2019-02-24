@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="c#," />
+  <meta name="keywords" content="Knowledge Graph," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="Refer: Microsoft doc 声明和使用变量字符串文本以 $ 字符开头，后接左双引号字符。 $ 符号和引号字符之间不能有空格。 则可以在大括号之间的字符串内包括变量。 如： Console.WriteLine($”Hello {aFriend}”); Console.WriteLine($”The name {firstFriend} has {firstFriend.Length}">
-<meta name="keywords" content="c#">
+<meta name="description" content="Part2. Graph Properties and Applications1. Graph BasicsDegreeDegree in Microsoft Academic Graph(MAG):  Author collaboration graph(undirected graph)  Degree represents the number of collaborators each">
+<meta name="keywords" content="Knowledge Graph">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c#学习笔记 - 1">
-<meta property="og:url" content="http://yoursite.com/2019/02/09/c-学习-1/index.html">
+<meta property="og:title" content="Knowledge Graph Note">
+<meta property="og:url" content="http://yoursite.com/2019/02/23/Knowledge Graph Note/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Refer: Microsoft doc 声明和使用变量字符串文本以 $ 字符开头，后接左双引号字符。 $ 符号和引号字符之间不能有空格。 则可以在大括号之间的字符串内包括变量。 如： Console.WriteLine($”Hello {aFriend}”); Console.WriteLine($”The name {firstFriend} has {firstFriend.Length}">
+<meta property="og:description" content="Part2. Graph Properties and Applications1. Graph BasicsDegreeDegree in Microsoft Academic Graph(MAG):  Author collaboration graph(undirected graph)  Degree represents the number of collaborators each">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-02-19T07:32:18.488Z">
+<meta property="og:image" content="http://yoursite.com/2019/02/23/Knowledge%20Graph%20Note/SimilarityInNetworks.png">
+<meta property="og:updated_time" content="2019-02-24T21:25:02.805Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="c#学习笔记 - 1">
-<meta name="twitter:description" content="Refer: Microsoft doc 声明和使用变量字符串文本以 $ 字符开头，后接左双引号字符。 $ 符号和引号字符之间不能有空格。 则可以在大括号之间的字符串内包括变量。 如： Console.WriteLine($”Hello {aFriend}”); Console.WriteLine($”The name {firstFriend} has {firstFriend.Length}">
+<meta name="twitter:title" content="Knowledge Graph Note">
+<meta name="twitter:description" content="Part2. Graph Properties and Applications1. Graph BasicsDegreeDegree in Microsoft Academic Graph(MAG):  Author collaboration graph(undirected graph)  Degree represents the number of collaborators each">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/23/Knowledge%20Graph%20Note/SimilarityInNetworks.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/09/c-学习-1/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/02/23/Knowledge Graph Note/"/>
 
 
 
 
 
-  <title>c#学习笔记 - 1 | Hexo</title>
+  <title>Knowledge Graph Note | Hexo</title>
   
 
 
@@ -263,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/09/c-学习-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/23/Knowledge Graph Note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Melody Chen(sleeplessaaa)">
@@ -280,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">c#学习笔记 - 1</h1>
+          <h1 class="post-title" itemprop="name headline">Knowledge Graph Note</h1>
         
 
         <div class="post-meta">
@@ -292,8 +294,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-09T10:25:02-08:00">
-                2019-02-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-23T19:00:35-08:00">
+                2019-02-23
               </time>
             
 
@@ -330,18 +332,79 @@
       
 
       
-        <p>Refer: Microsoft doc</p>
-<h4 id="声明和使用变量"><a href="#声明和使用变量" class="headerlink" title="声明和使用变量"></a>声明和使用变量</h4><p>字符串文本以 <code>$</code> 字符开头，后接左双引号字符。 <code>$</code> 符号和引号字符之间不能有空格。 则可以在大括号之间的字符串内包括变量。</p>
-<p>如： Console.WriteLine($”Hello {aFriend}”);</p>
-<p>Console.WriteLine($”The name {firstFriend} has {firstFriend.Length} letters.”);</p>
-<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>Trim(), TrimStart(), TrimEnd(), 剪裁前导或尾随空格</p>
-<p>Replace(): 搜索子字符串，替换其他文本</p>
-<p>大小写：ToUpper(), ToLower()</p>
-<p>搜索字符串： Contains(), StartsWith(), EndsWith()</p>
-<h4 id="整数运算限值"><a href="#整数运算限值" class="headerlink" title="整数运算限值"></a>整数运算限值</h4><p>int max = int.MaxValue;<br>int min = int.MinValue;</p>
-<p>int what = max + 3;<br>Console.WriteLine($”An example of overflow: {what}”);</p>
-<p>=&gt; 答案非常接近最小（负）整数。 与 <code>min + 2</code> 相同。 加法运算会让整数溢出允许的值。 答案是一个非常大的负数，因为溢出从最大整数值覆盖回最小整数值。</p>
-<h4 id="双精度类型和固定点类型"><a href="#双精度类型和固定点类型" class="headerlink" title="双精度类型和固定点类型"></a>双精度类型和固定点类型</h4><p> <code>double</code> 范围比int大，<code>decimal</code> 类型的范围较小，但精度高于 <code>double</code>。 “固定点”一词意味着，十进制小数点（或二进制小数点）不会移动。 </p>
+        <h2 id="Part2-Graph-Properties-and-Applications"><a href="#Part2-Graph-Properties-and-Applications" class="headerlink" title="Part2. Graph Properties and Applications"></a>Part2. Graph Properties and Applications</h2><h3 id="1-Graph-Basics"><a href="#1-Graph-Basics" class="headerlink" title="1. Graph Basics"></a>1. Graph Basics</h3><h4 id="Degree"><a href="#Degree" class="headerlink" title="Degree"></a>Degree</h4><p>Degree in Microsoft Academic Graph(MAG):</p>
+<ul>
+<li><p>Author collaboration graph(undirected graph)</p>
+<blockquote>
+<p>Degree represents the number of collaborators each author has.</p>
+</blockquote>
+</li>
+<li><p>Paper citation graph(directed graph)</p>
+<blockquote>
+<p>In-degree represents the number of citations each paper collects.<br>Out-degree represents the number of references each paper covers.</p>
+</blockquote>
+</li>
+<li><p>Institution collaboration graph</p>
+</li>
+<li>Institution citation graph</li>
+<li>Field-of-study citation graph</li>
+<li>Venue citation graph</li>
+</ul>
+<p>Degree centrality: measure the importance of nodes.<br>1) <strong>clustering coefficient centrality</strong>: if two nodes has same same degree centrality.<br>Definition: The ratio of (number of closed triangle formed by the node and its neighbors) + (number of all possible triangles formed)</p>
+<p>2) <strong>Neighborhood connectivity</strong>: if same clustering coefficient centrality.<br>Definition: average degree of one’s neighbors</p>
+<p>3) <strong>Eigenvector centrality</strong>: to avoid repeat iteratively.<br>Definition: each node’s centrality is the sum of the centrality values of the nodes that it is connected to. (only works for undirected graph)</p>
+<p>4) <strong>PageRank centrality</strong>: works for directed graph,  takes link direction and weight into account.</p>
+<p>5) <strong>HITS centrality</strong>(hyperlink-induced topic search algorithm):<br>Early days web pages: Hubness(中心) centrality scores + Authority centrality</p>
+<h4 id="Graph-theory"><a href="#Graph-theory" class="headerlink" title="Graph theory"></a>Graph theory</h4><ol>
+<li><p><strong>Graphicality</strong> realization: A finite sequence of non-negative integer d is graphical if a simple graph G can be constructed with its degree sequence as d; The graph G is one of d’s graphical realization.</p>
+<blockquote>
+<p>How can we tell whether a sequence is graphical?<br>If one sequence is graphical, how can we have its graphical realization?</p>
+</blockquote>
+</li>
+<li><p><strong>Graph isomorphism</strong></p>
+</li>
+<li><p><strong>Fractals and scaling</strong></p>
+<blockquote>
+<p>Why can’t we keep growing in body size and weight?<br>Why can’t we live for 1000 years, but ~100 years?<br>Why can’t we sleep for 1 hour or 23 hours per day?</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="2-Graph-Applications"><a href="#2-Graph-Applications" class="headerlink" title="2. Graph Applications"></a>2. Graph Applications</h3><h4 id="a-Node-label-classification"><a href="#a-Node-label-classification" class="headerlink" title="a. Node label classification"></a>a. Node label classification</h4><blockquote>
+<p>Social networking sites may try to infer unknown user’s demographic information.</p>
+</blockquote>
+<p>Such problem is formulized into a data mining task, such as classification(e.g user’s gender) and regression(e.g user’s age).</p>
+<p><code>Application: Demographic prediction in social networks</code></p>
+<p>Node label classification in MAG:</p>
+<ul>
+<li>For each paper in a AG, infer its fiels of study from collaboration/citation network structure.<br>(By leveraging the autor collaboration and the paper citation graph.)</li>
+</ul>
+<h4 id="b-Community-detection"><a href="#b-Community-detection" class="headerlink" title="b. Community detection"></a>b. Community detection</h4><p>The community detection is referred to as the node clustering task in the context of data mining or machine learning.</p>
+<p>Community in graph: one set of nodes that can be grouped together.(exist very dense connections between this group of nodes)</p>
+<blockquote>
+<p><strong>How do we detect communities?</strong></p>
+</blockquote>
+<h2 id="transform-the-community-detection-problem-as-a-node-clustering"><a href="#transform-the-community-detection-problem-as-a-node-clustering" class="headerlink" title="transform the community detection problem as a node clustering."></a>transform the community detection problem as a node clustering.</h2><blockquote>
+<p><strong>How do you split nodes into multiple groups?(best choice)</strong><br>minimize number of connections between two communities and at the same time maximize numbers of connections within each community.</p>
+</blockquote>
+<p><strong>Graph laplacian matrix</strong><br><code>L = D - A</code><br>D: degree matrix<br>A: adjacency matrix</p>
+<p>L is Positive semidefinite<br>L’s Eigenvalues are non-negative<br>L’s Eigenvectors are real &amp; orthogonal</p>
+<blockquote>
+<p><strong>More than two communities?</strong><br>How to determine the number of clusters K?<br>How to partition a graph into k clusters?</p>
+</blockquote>
+<h4 id="c-Link-prediction"><a href="#c-Link-prediction" class="headerlink" title="c. Link prediction"></a>c. Link prediction</h4><p>Given two nodes are not connected right now, aim to infer whether a link will form between them.</p>
+<blockquote>
+<ul>
+<li>Friend recommendation, e.g, “People you know”, “Who to follow”</li>
+<li>Item recommendation, e.g, movies to watch on netflix, books to buy in Amazon</li>
+</ul>
+</blockquote>
+<p>=&gt; most effective way to predict is to measure the structural similarity between these two nodes.</p>
+<p><strong>Similarity in networks</strong><br>The intersection of two’s neighbors over the union of their neighbors.</p>
+<ul>
+<li>Structural diversity of common neighbors<br><img src="SimilarityInNetworks.png" alt=""></li>
+</ul>
+<hr>
+<hr>
 
       
     </div>
@@ -359,7 +422,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/c/" rel="tag"># c#</a>
+            <a href="/tags/Knowledge-Graph/" rel="tag"># Knowledge Graph</a>
           
         </div>
       
@@ -372,8 +435,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/26/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/02/23/KnowledgeGraph-Note2/" rel="next" title="Reading Notes1-Mining Knowledge Graphs from Text">
+                <i class="fa fa-chevron-left"></i> Reading Notes1-Mining Knowledge Graphs from Text
               </a>
             
           </div>
@@ -381,10 +444,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/19/github/" rel="prev" title="git">
-                git <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -507,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明和使用变量"><span class="nav-number">1.</span> <span class="nav-text">声明和使用变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串"><span class="nav-number">2.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#整数运算限值"><span class="nav-number">3.</span> <span class="nav-text">整数运算限值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双精度类型和固定点类型"><span class="nav-number">4.</span> <span class="nav-text">双精度类型和固定点类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Part2-Graph-Properties-and-Applications"><span class="nav-number">1.</span> <span class="nav-text">Part2. Graph Properties and Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Graph-Basics"><span class="nav-number">1.1.</span> <span class="nav-text">1. Graph Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Degree"><span class="nav-number">1.1.1.</span> <span class="nav-text">Degree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Graph-theory"><span class="nav-number">1.1.2.</span> <span class="nav-text">Graph theory</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Graph-Applications"><span class="nav-number">1.2.</span> <span class="nav-text">2. Graph Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#a-Node-label-classification"><span class="nav-number">1.2.1.</span> <span class="nav-text">a. Node label classification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#b-Community-detection"><span class="nav-number">1.2.2.</span> <span class="nav-text">b. Community detection</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transform-the-community-detection-problem-as-a-node-clustering"><span class="nav-number">2.</span> <span class="nav-text">transform the community detection problem as a node clustering.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#c-Link-prediction"><span class="nav-number">2.0.1.</span> <span class="nav-text">c. Link prediction</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
