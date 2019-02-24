@@ -79,19 +79,22 @@
 
 
 
-<meta name="description" content="Part2. Graph Properties and Applications1. Graph BasicsDegreeDegree in Microsoft Academic Graph(MAG):  Author collaboration graph(undirected graph)  Degree represents the number of collaborators each">
+<meta name="description" content="Part1. Introduction and OverviewPart2. Graph Properties and Applications">
 <meta name="keywords" content="Knowledge Graph">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Knowledge Graph Note">
+<meta property="og:title" content="From Graph to Knowledge Graph – Algorithms and Applications [Note1]">
 <meta property="og:url" content="http://yoursite.com/2019/02/23/Knowledge Graph Note/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Part2. Graph Properties and Applications1. Graph BasicsDegreeDegree in Microsoft Academic Graph(MAG):  Author collaboration graph(undirected graph)  Degree represents the number of collaborators each">
+<meta property="og:description" content="Part1. Introduction and OverviewPart2. Graph Properties and Applications">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2019/02/23/Knowledge%20Graph%20Note/SimilarityInNetworks.png">
-<meta property="og:updated_time" content="2019-02-24T21:25:02.805Z">
+<meta property="og:image" content="http://yoursite.com/2019/02/23/Knowledge%20Graph%20Note/HeteroLinkPredict.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/23/Knowledge%20Graph%20Note/HetoPredic2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/23/Knowledge%20Graph%20Note/LinkPredictMAG.png">
+<meta property="og:updated_time" content="2019-02-24T22:01:39.432Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Knowledge Graph Note">
-<meta name="twitter:description" content="Part2. Graph Properties and Applications1. Graph BasicsDegreeDegree in Microsoft Academic Graph(MAG):  Author collaboration graph(undirected graph)  Degree represents the number of collaborators each">
+<meta name="twitter:title" content="From Graph to Knowledge Graph – Algorithms and Applications [Note1]">
+<meta name="twitter:description" content="Part1. Introduction and OverviewPart2. Graph Properties and Applications">
 <meta name="twitter:image" content="http://yoursite.com/2019/02/23/Knowledge%20Graph%20Note/SimilarityInNetworks.png">
 
 
@@ -128,7 +131,7 @@
 
 
 
-  <title>Knowledge Graph Note | Hexo</title>
+  <title>From Graph to Knowledge Graph – Algorithms and Applications [Note1] | Hexo</title>
   
 
 
@@ -282,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Knowledge Graph Note</h1>
+          <h1 class="post-title" itemprop="name headline">From Graph to Knowledge Graph – Algorithms and Applications [Note1]</h1>
         
 
         <div class="post-meta">
@@ -332,7 +335,8 @@
       
 
       
-        <h2 id="Part2-Graph-Properties-and-Applications"><a href="#Part2-Graph-Properties-and-Applications" class="headerlink" title="Part2. Graph Properties and Applications"></a>Part2. Graph Properties and Applications</h2><h3 id="1-Graph-Basics"><a href="#1-Graph-Basics" class="headerlink" title="1. Graph Basics"></a>1. Graph Basics</h3><h4 id="Degree"><a href="#Degree" class="headerlink" title="Degree"></a>Degree</h4><p>Degree in Microsoft Academic Graph(MAG):</p>
+        <h2 id="Part1-Introduction-and-Overview"><a href="#Part1-Introduction-and-Overview" class="headerlink" title="Part1. Introduction and Overview"></a>Part1. Introduction and Overview</h2><h2 id="Part2-Graph-Properties-and-Applications"><a href="#Part2-Graph-Properties-and-Applications" class="headerlink" title="Part2. Graph Properties and Applications"></a>Part2. Graph Properties and Applications</h2><a id="more"></a>
+<h3 id="1-Graph-Basics"><a href="#1-Graph-Basics" class="headerlink" title="1. Graph Basics"></a>1. Graph Basics</h3><h4 id="Degree"><a href="#Degree" class="headerlink" title="Degree"></a>Degree</h4><p>Degree in Microsoft Academic Graph(MAG):</p>
 <ul>
 <li><p>Author collaboration graph(undirected graph)</p>
 <blockquote>
@@ -344,15 +348,16 @@
 <p>In-degree represents the number of citations each paper collects.<br>Out-degree represents the number of references each paper covers.</p>
 </blockquote>
 </li>
-<li><p>Institution collaboration graph</p>
-</li>
+</ul>
+<ul>
+<li>Institution collaboration graph</li>
 <li>Institution citation graph</li>
 <li>Field-of-study citation graph</li>
 <li>Venue citation graph</li>
 </ul>
-<p>Degree centrality: measure the importance of nodes.<br>1) <strong>clustering coefficient centrality</strong>: if two nodes has same same degree centrality.<br>Definition: The ratio of (number of closed triangle formed by the node and its neighbors) + (number of all possible triangles formed)</p>
-<p>2) <strong>Neighborhood connectivity</strong>: if same clustering coefficient centrality.<br>Definition: average degree of one’s neighbors</p>
-<p>3) <strong>Eigenvector centrality</strong>: to avoid repeat iteratively.<br>Definition: each node’s centrality is the sum of the centrality values of the nodes that it is connected to. (only works for undirected graph)</p>
+<p><strong>Degree centrality</strong>: measure the importance of nodes.<br>1) <strong>clustering coefficient centrality</strong>: ( if two nodes has same same degree centrality.)<br>Definition: The ratio of (number of closed triangle formed by the node and its neighbors) + (number of all possible triangles formed)</p>
+<p>2) <strong>Neighborhood connectivity</strong>: (if two nodes has same clustering coefficient centrality. )<br>Definition: average degree of one’s neighbors</p>
+<p>3) <strong>Eigenvector centrality</strong>: (to avoid repeat iteratively in 2, only works for undirected graph).<br>Definition: each node’s centrality is the sum of the centrality values of the nodes that it is connected to. </p>
 <p>4) <strong>PageRank centrality</strong>: works for directed graph,  takes link direction and weight into account.</p>
 <p>5) <strong>HITS centrality</strong>(hyperlink-induced topic search algorithm):<br>Early days web pages: Hubness(中心) centrality scores + Authority centrality</p>
 <h4 id="Graph-theory"><a href="#Graph-theory" class="headerlink" title="Graph theory"></a>Graph theory</h4><ol>
@@ -381,10 +386,7 @@
 <h4 id="b-Community-detection"><a href="#b-Community-detection" class="headerlink" title="b. Community detection"></a>b. Community detection</h4><p>The community detection is referred to as the node clustering task in the context of data mining or machine learning.</p>
 <p>Community in graph: one set of nodes that can be grouped together.(exist very dense connections between this group of nodes)</p>
 <blockquote>
-<p><strong>How do we detect communities?</strong></p>
-</blockquote>
-<h2 id="transform-the-community-detection-problem-as-a-node-clustering"><a href="#transform-the-community-detection-problem-as-a-node-clustering" class="headerlink" title="transform the community detection problem as a node clustering."></a>transform the community detection problem as a node clustering.</h2><blockquote>
-<p><strong>How do you split nodes into multiple groups?(best choice)</strong><br>minimize number of connections between two communities and at the same time maximize numbers of connections within each community.</p>
+<p><strong>How do we detect communities?</strong><br>transform the community detection problem as a node clustering.<br><strong>How do you split nodes into multiple groups?(best choice)</strong><br>minimize number of connections between two communities and at the same time maximize numbers of connections within each community.</p>
 </blockquote>
 <p><strong>Graph laplacian matrix</strong><br><code>L = D - A</code><br>D: degree matrix<br>A: adjacency matrix</p>
 <p>L is Positive semidefinite<br>L’s Eigenvalues are non-negative<br>L’s Eigenvectors are real &amp; orthogonal</p>
@@ -401,9 +403,28 @@
 <p>=&gt; most effective way to predict is to measure the structural similarity between these two nodes.</p>
 <p><strong>Similarity in networks</strong><br>The intersection of two’s neighbors over the union of their neighbors.</p>
 <ul>
-<li>Structural diversity of common neighbors<br><img src="SimilarityInNetworks.png" alt=""></li>
+<li>Structural diversity of common neighbors<br><img src="SimilarityInNetworks.png" alt=""><blockquote>
+<p>In which case is more likely for node i and j to connect?</p>
+</blockquote>
+</li>
 </ul>
-<hr>
+<ol>
+<li>Facebook: more likely for right case, two people with four connected common friends to link with each other.</li>
+<li>LinkedIn: more likely for left case, when they have a diverse set of common neighbors.</li>
+</ol>
+<p><strong>Structural similarity in MAG</strong></p>
+<ul>
+<li>#common-coauthors of two author collaboration graphs.</li>
+<li>#cocitations of two papers in citation graphs.</li>
+</ul>
+<h4 id="d-Heterogeneous-link-prediction-problem"><a href="#d-Heterogeneous-link-prediction-problem" class="headerlink" title="d. Heterogeneous link prediction problem"></a>d. Heterogeneous link prediction problem</h4><p><img src="HeteroLinkPredict.png" alt=""><br>Break the heterogeneous graph into three subgraphs: circle graph, square graph, bipartite graph.<br><img src="HetoPredic2.png" alt=""><br>Case example:</p>
+<ol>
+<li>Netflix: Users(circle nodes),<br>movies(square nodes),<br>goal: infer red links(whether user want to watch the movie on the right)</li>
+<li>Social networks: exist social relationships to incorporated into the recommendation system.</li>
+<li>MAG</li>
+<li>Mobile communication network: AT&amp;T users(circle nodes),<br>T-Mobile users(square nodes),<br>links(communication relationships between them)<br>goal for AT&amp;T: infer the communication relationships between any pairs of T-Mobile users.</li>
+</ol>
+<p><img src="LinkPredictMAG.png" alt=""></p>
 <hr>
 
       
@@ -566,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Part2-Graph-Properties-and-Applications"><span class="nav-number">1.</span> <span class="nav-text">Part2. Graph Properties and Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Graph-Basics"><span class="nav-number">1.1.</span> <span class="nav-text">1. Graph Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Degree"><span class="nav-number">1.1.1.</span> <span class="nav-text">Degree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Graph-theory"><span class="nav-number">1.1.2.</span> <span class="nav-text">Graph theory</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Graph-Applications"><span class="nav-number">1.2.</span> <span class="nav-text">2. Graph Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#a-Node-label-classification"><span class="nav-number">1.2.1.</span> <span class="nav-text">a. Node label classification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#b-Community-detection"><span class="nav-number">1.2.2.</span> <span class="nav-text">b. Community detection</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transform-the-community-detection-problem-as-a-node-clustering"><span class="nav-number">2.</span> <span class="nav-text">transform the community detection problem as a node clustering.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#c-Link-prediction"><span class="nav-number">2.0.1.</span> <span class="nav-text">c. Link prediction</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Part1-Introduction-and-Overview"><span class="nav-number">1.</span> <span class="nav-text">Part1. Introduction and Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part2-Graph-Properties-and-Applications"><span class="nav-number">2.</span> <span class="nav-text">Part2. Graph Properties and Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Graph-Basics"><span class="nav-number">2.1.</span> <span class="nav-text">1. Graph Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Degree"><span class="nav-number">2.1.1.</span> <span class="nav-text">Degree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Graph-theory"><span class="nav-number">2.1.2.</span> <span class="nav-text">Graph theory</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Graph-Applications"><span class="nav-number">2.2.</span> <span class="nav-text">2. Graph Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#a-Node-label-classification"><span class="nav-number">2.2.1.</span> <span class="nav-text">a. Node label classification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#b-Community-detection"><span class="nav-number">2.2.2.</span> <span class="nav-text">b. Community detection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c-Link-prediction"><span class="nav-number">2.2.3.</span> <span class="nav-text">c. Link prediction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#d-Heterogeneous-link-prediction-problem"><span class="nav-number">2.2.4.</span> <span class="nav-text">d. Heterogeneous link prediction problem</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
