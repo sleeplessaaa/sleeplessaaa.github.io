@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="c#," />
+  <meta name="keywords" content="Knowledge Graph," />
 
 
 
@@ -79,18 +79,22 @@
 
 
 
-<meta name="description" content="Refer: Microsoft doc 声明和使用变量字符串文本以 $ 字符开头，后接左双引号字符。 $ 符号和引号字符之间不能有空格。 则可以在大括号之间的字符串内包括变量。 如： Console.WriteLine($”Hello {aFriend}”); Console.WriteLine($”The name {firstFriend} has {firstFriend.Length}">
-<meta name="keywords" content="c#">
+<meta name="description" content="Part3. Graph Representation LearningProblem: structural feature engineering over the graph is expensive.=&amp;gt; Graph Representation Learning aimed to learn latent(潜在的) feature matrix  Representation le">
+<meta name="keywords" content="Knowledge Graph">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c#学习笔记 - 1">
-<meta property="og:url" content="http://yoursite.com/2019/02/09/c-学习-1/index.html">
+<meta property="og:title" content="From Graph to Knowledge Graph – Algorithms and Applications [Note2]">
+<meta property="og:url" content="http://yoursite.com/2019/02/24/Knowledge Graph Note2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Refer: Microsoft doc 声明和使用变量字符串文本以 $ 字符开头，后接左双引号字符。 $ 符号和引号字符之间不能有空格。 则可以在大括号之间的字符串内包括变量。 如： Console.WriteLine($”Hello {aFriend}”); Console.WriteLine($”The name {firstFriend} has {firstFriend.Length}">
+<meta property="og:description" content="Part3. Graph Representation LearningProblem: structural feature engineering over the graph is expensive.=&amp;gt; Graph Representation Learning aimed to learn latent(潜在的) feature matrix  Representation le">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-02-19T07:32:18.488Z">
+<meta property="og:image" content="http://yoursite.com/2019/02/24/Knowledge%20Graph%20Note2/featureLearn.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/24/Knowledge%20Graph%20Note2/wordEmbedNLP.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/24/Knowledge%20Graph%20Note2/SGInputOutput.png">
+<meta property="og:updated_time" content="2019-02-25T01:05:24.909Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="c#学习笔记 - 1">
-<meta name="twitter:description" content="Refer: Microsoft doc 声明和使用变量字符串文本以 $ 字符开头，后接左双引号字符。 $ 符号和引号字符之间不能有空格。 则可以在大括号之间的字符串内包括变量。 如： Console.WriteLine($”Hello {aFriend}”); Console.WriteLine($”The name {firstFriend} has {firstFriend.Length}">
+<meta name="twitter:title" content="From Graph to Knowledge Graph – Algorithms and Applications [Note2]">
+<meta name="twitter:description" content="Part3. Graph Representation LearningProblem: structural feature engineering over the graph is expensive.=&amp;gt; Graph Representation Learning aimed to learn latent(潜在的) feature matrix  Representation le">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/24/Knowledge%20Graph%20Note2/featureLearn.png">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/09/c-学习-1/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/02/24/Knowledge Graph Note2/"/>
 
 
 
 
 
-  <title>c#学习笔记 - 1 | Hexo</title>
+  <title>From Graph to Knowledge Graph – Algorithms and Applications [Note2] | Hexo</title>
   
 
 
@@ -263,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/09/c-学习-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/24/Knowledge Graph Note2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Melody Chen(sleeplessaaa)">
@@ -280,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">c#学习笔记 - 1</h1>
+          <h1 class="post-title" itemprop="name headline">From Graph to Knowledge Graph – Algorithms and Applications [Note2]</h1>
         
 
         <div class="post-meta">
@@ -292,8 +296,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-09T10:25:02-08:00">
-                2019-02-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-24T14:02:38-08:00">
+                2019-02-24
               </time>
             
 
@@ -330,19 +334,26 @@
       
 
       
-        <p>Refer: Microsoft doc</p>
-<h4 id="声明和使用变量"><a href="#声明和使用变量" class="headerlink" title="声明和使用变量"></a>声明和使用变量</h4><p>字符串文本以 <code>$</code> 字符开头，后接左双引号字符。 <code>$</code> 符号和引号字符之间不能有空格。 则可以在大括号之间的字符串内包括变量。</p>
-<p>如： Console.WriteLine($”Hello {aFriend}”);</p>
-<p>Console.WriteLine($”The name {firstFriend} has {firstFriend.Length} letters.”);</p>
-<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>Trim(), TrimStart(), TrimEnd(), 剪裁前导或尾随空格</p>
-<p>Replace(): 搜索子字符串，替换其他文本</p>
-<p>大小写：ToUpper(), ToLower()</p>
-<p>搜索字符串： Contains(), StartsWith(), EndsWith()</p>
-<h4 id="整数运算限值"><a href="#整数运算限值" class="headerlink" title="整数运算限值"></a>整数运算限值</h4><p>int max = int.MaxValue;<br>int min = int.MinValue;</p>
-<p>int what = max + 3;<br>Console.WriteLine($”An example of overflow: {what}”);</p>
-<p>=&gt; 答案非常接近最小（负）整数。 与 <code>min + 2</code> 相同。 加法运算会让整数溢出允许的值。 答案是一个非常大的负数，因为溢出从最大整数值覆盖回最小整数值。</p>
-<h4 id="双精度类型和固定点类型"><a href="#双精度类型和固定点类型" class="headerlink" title="双精度类型和固定点类型"></a>双精度类型和固定点类型</h4><p> <code>double</code> 范围比int大，<code>decimal</code> 类型的范围较小，但精度高于 <code>double</code>。 “固定点”一词意味着，十进制小数点（或二进制小数点）不会移动。 </p>
-
+        <h2 id="Part3-Graph-Representation-Learning"><a href="#Part3-Graph-Representation-Learning" class="headerlink" title="Part3. Graph Representation Learning"></a>Part3. Graph Representation Learning</h2><p>Problem: structural feature engineering over the graph is expensive.<br>=&gt; Graph Representation Learning aimed to learn <strong>latent</strong>(潜在的) feature matrix</p>
+<blockquote>
+<p>Representation learning for graph mining?<br>The goal is to map each node into a latent low-dimensional space such that network structure information is encoded into distributional node representations.</p>
+</blockquote>
+<h3 id="1-Skip-gram-based-graph-embedding"><a href="#1-Skip-gram-based-graph-embedding" class="headerlink" title="1. Skip-gram based graph embedding"></a>1. Skip-gram based graph embedding</h3><p><img src="featureLearn.png" alt=""></p>
+<h4 id="skip-gram-based-word-embedding"><a href="#skip-gram-based-word-embedding" class="headerlink" title="skip-gram based word embedding"></a>skip-gram based word embedding</h4><p><img src="wordEmbedNLP.png" alt=""></p>
+<blockquote>
+<p>The queston becomes: how to transform the graph into a word document?<br>Or, how to transform the nonlinear graph structure into linear structures?</p>
+</blockquote>
+<p>Consider sentence as a node path, each node representing a word.</p>
+<p><img src="SGInputOutput.png" alt=""><br>Two steps:</p>
+<ol>
+<li>random walks over graph to generate node path.</li>
+<li>skip gram model to apply to node path generated in the first step.</li>
+</ol>
+<p><strong>Skip gram with negative sampling</strong></p>
+<ul>
+<li>For sufficiently large dimension d, the objective of SGNS(Skip-gram with negative sampling) is equivalent to factorizing the PMI matrix(Pointwise mutual information matrix).</li>
+</ul>
+<h3 id="2-Heterogeneous-graph-embedding"><a href="#2-Heterogeneous-graph-embedding" class="headerlink" title="2. Heterogeneous graph embedding"></a>2. Heterogeneous graph embedding</h3><h3 id="3-Graph-convolutional-network"><a href="#3-Graph-convolutional-network" class="headerlink" title="3. Graph convolutional network"></a>3. Graph convolutional network</h3>
       
     </div>
     
@@ -359,7 +370,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/c/" rel="tag"># c#</a>
+            <a href="/tags/Knowledge-Graph/" rel="tag"># Knowledge Graph</a>
           
         </div>
       
@@ -372,8 +383,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/26/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/02/23/Knowledge Graph Note/" rel="next" title="From Graph to Knowledge Graph – Algorithms and Applications [Note1]">
+                <i class="fa fa-chevron-left"></i> From Graph to Knowledge Graph – Algorithms and Applications [Note1]
               </a>
             
           </div>
@@ -381,10 +392,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/19/github/" rel="prev" title="git">
-                git <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -507,7 +514,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明和使用变量"><span class="nav-number">1.</span> <span class="nav-text">声明和使用变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串"><span class="nav-number">2.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#整数运算限值"><span class="nav-number">3.</span> <span class="nav-text">整数运算限值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双精度类型和固定点类型"><span class="nav-number">4.</span> <span class="nav-text">双精度类型和固定点类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Part3-Graph-Representation-Learning"><span class="nav-number">1.</span> <span class="nav-text">Part3. Graph Representation Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Skip-gram-based-graph-embedding"><span class="nav-number">1.1.</span> <span class="nav-text">1. Skip-gram based graph embedding</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#skip-gram-based-word-embedding"><span class="nav-number">1.1.1.</span> <span class="nav-text">skip-gram based word embedding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Heterogeneous-graph-embedding"><span class="nav-number">1.2.</span> <span class="nav-text">2. Heterogeneous graph embedding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Graph-convolutional-network"><span class="nav-number">1.3.</span> <span class="nav-text">3. Graph convolutional network</span></a></li></ol></li></ol></div>
             
 
           </div>
