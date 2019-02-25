@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Database,MySQL," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Atomicity, Consistency, Isolation, Durability 事务： 并发控制的基本单位（一系列数据库操作的集合）">
+<meta name="keywords" content="Database,MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL事务ACID的实现">
+<meta property="og:url" content="http://yoursite.com/2019/02/24/事务ACID的实现/index.html">
+<meta property="og:site_name" content="sleeplessaaa">
+<meta property="og:description" content="Atomicity, Consistency, Isolation, Durability 事务： 并发控制的基本单位（一系列数据库操作的集合）">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/02/24/事务ACID的实现/ACID.png">
+<meta property="og:updated_time" content="2019-02-25T05:36:25.192Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL事务ACID的实现">
+<meta name="twitter:description" content="Atomicity, Consistency, Isolation, Durability 事务： 并发控制的基本单位（一系列数据库操作的集合）">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/24/事务ACID的实现/ACID.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/24/事务ACID的实现/"/>
+
+
+
+
+
+  <title>MySQL事务ACID的实现 | sleeplessaaa</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sleeplessaaa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-about"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/24/事务ACID的实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Melody">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sleeplessaaa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL事务ACID的实现</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-24T21:29:55-08:00">
+                2019-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Atomicity, Consistency, Isolation, Durability</p>
+<p>事务： 并发控制的基本单位（一系列数据库操作的集合）<br><a id="more"></a></p>
+<h1 id="1-原子性：-要么全部都执行，要都不执行"><a href="#1-原子性：-要么全部都执行，要都不执行" class="headerlink" title="1. 原子性： 要么全部都执行，要都不执行"></a>1. 原子性： 要么全部都执行，要都不执行</h1><h2 id="回滚日志（undo-log）"><a href="#回滚日志（undo-log）" class="headerlink" title="回滚日志（undo log）:"></a>回滚日志（undo log）:</h2><p>回滚日志除了能够在发生错误或者用户执行 ROLLBACK 时提供回滚相关的信息，它还能够在整个系统发生崩溃、数据库进程直接被杀死后，当用户再次启动数据库进程时，还能够立刻通过查询回滚日志将之前未完成的事务进行回滚，这也就需要回滚日志必须先于数据持久化到磁盘上，是我们需要先写日志后写数据库的主要原因。</p>
+<p>回滚日志并不能将数据库物理地恢复到执行语句或者事务之前的样子；它是逻辑日志，当回滚日志被使用时，它只会按照日志逻辑地将数据库中的修改撤销掉看，可以理解为，我们在事务中使用的每一条 INSERT 都对应了一条 DELETE，每一条 UPDATE 也都对应一条相反的 UPDATE 语句。</p>
+<h2 id="事务的状态：-Active-Commited-Failed"><a href="#事务的状态：-Active-Commited-Failed" class="headerlink" title="事务的状态： Active, Commited, Failed"></a>事务的状态： Active, Commited, Failed</h2><ul>
+<li>Active：事务的初始状态，表示事务正在执行；</li>
+<li>Partially Commited：在最后一条语句执行之后；</li>
+<li>Failed：发现事务无法正常执行之后；</li>
+<li>Aborted：事务被回滚并且数据库恢复到了事务进行之前的状态之后；</li>
+<li>Commited：成功执行整个事务；</li>
+</ul>
+<h2 id="并行事务的原子性"><a href="#并行事务的原子性" class="headerlink" title="并行事务的原子性"></a>并行事务的原子性</h2><p>Nonrecoverable Schedule: </p>
+<blockquote>
+<p>A recoverable schedule is one where, for each pair of transactions Ti and Tj such that Tj reads a data item previously written by Ti , the commit operation of Ti appears before the commit operation of Tj .</p>
+</blockquote>
+<p>Transaction2 依赖于 Transaction1，而 Transaction3 又依赖于 Transaction1，当 Transaction1 由于执行出现问题发生回滚时，为了保证事务的原子性，就会将 Transaction2 和 Transaction3 中的工作全部回滚，这种情况也叫做级联回滚（Cascading Rollback），级联回滚的发生会导致大量的工作需要撤回，是我们难以接受的，不过如果想要达到绝对的原子性，这件事情又是不得不去处理的，</p>
+<h1 id="2-持久性"><a href="#2-持久性" class="headerlink" title="2. 持久性"></a>2. 持久性</h1><p>当事务已经被提交之后，就无法再次回滚了，唯一能够撤回已经提交的事务的方式就是创建一个相反的事务对原操作进行『补偿』，这也是事务持久性的体现之一。</p>
+<h2 id="重做日志"><a href="#重做日志" class="headerlink" title="重做日志"></a>重做日志</h2><p>MySQL 使用重做日志（redo log）实现事务的持久性，重做日志由两部分组成，一是内存中的重做日志缓冲区，因为重做日志缓冲区在内存中，所以它是易失的，另一个就是在磁盘上的重做日志文件，它是持久的。</p>
+<h2 id="回滚日志和重做日志"><a href="#回滚日志和重做日志" class="headerlink" title="回滚日志和重做日志"></a>回滚日志和重做日志</h2><p>MySQL 中的两种日志，回滚日志（undo log）和重做日志（redo log）；在数据库系统中，事务的原子性和持久性是由事务日志（transaction log）保证的，在实现时也就是上面提到的两种日志，前者用于对事务的影响进行撤销，后者在错误处理时对已经提交的事务进行重做，它们能保证两点：</p>
+<ol>
+<li>发生错误或者需要回滚的事务能够成功回滚（原子性）；</li>
+<li>在事务提交后，数据没来得及写会磁盘就宕机时，在下次重新启动后能够成功恢复数据（持久性）；</li>
+</ol>
+<h1 id="3-隔离性"><a href="#3-隔离性" class="headerlink" title="3. 隔离性"></a>3. 隔离性</h1><h2 id="事务的隔离级别"><a href="#事务的隔离级别" class="headerlink" title="事务的隔离级别"></a>事务的隔离级别</h2><p>SQL 标准中定义了四种数据库的事务的隔离级别：READ UNCOMMITED、READ COMMITED、REPEATABLE READ 和 SERIALIZABLE；每个事务的隔离级别其实都比上一级多解决了一个问题：</p>
+<ul>
+<li>RAED UNCOMMITED：使用查询语句不会加锁，可能会读到未提交的行（Dirty Read）；</li>
+<li>READ COMMITED：只对记录加记录锁，而不会在记录之间加间隙锁，所以允许新的记录插入到被锁定记录的附近，所以再多次使用查询语句时，可能得到不同的结果（Non-Repeatable Read）；</li>
+<li>REPEATABLE READ：多次读取同一范围的数据会返回第一次查询的快照，不会返回不同的数据行，但是可能发生幻读（Phantom Read）；</li>
+<li>SERIALIZABLE：InnoDB 隐式地将全部的查询语句加上共享锁，解决了幻读的问题；</li>
+</ul>
+<p>随着事务隔离级别变得越来越严格，数据库对于并发执行事务的性能也逐渐下降。<br><img src="ACID.png" alt=""></p>
+<h2 id="隔离级别的实现"><a href="#隔离级别的实现" class="headerlink" title="隔离级别的实现"></a>隔离级别的实现</h2><p>使用<strong>并发控制机制</strong>对在同一时间执行的事务进行控制</p>
+<h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><p>锁住那些需要访问的数据项， MySQL 和常见数据库中的锁都分为两种，共享锁（Shared）和互斥锁（Exclusive），前者也叫读锁，后者叫写锁。</p>
+<h3 id="时间戳-Timestamp"><a href="#时间戳-Timestamp" class="headerlink" title="时间戳 Timestamp"></a>时间戳 Timestamp</h3><p>为每一条记录保留两个字段；读时间戳中保存所有访问该记录的事务中的最大时间戳，而记录行的写时间戳中保存了将记录改到当前值的事务的时间戳。<br>使用时间戳实现事务的隔离性时，往往都会使用乐观锁，先对数据进行修改，在写回时再去判断当前值，也就是时间戳是否改变过，如果没有改变过，就写入，否则，生成一个新的时间戳并再次更新数据。</p>
+<h3 id="多版本和快照隔离：-MVCC"><a href="#多版本和快照隔离：-MVCC" class="headerlink" title="多版本和快照隔离： MVCC"></a>多版本和快照隔离： MVCC</h3><h1 id="4-一致性"><a href="#4-一致性" class="headerlink" title="4. 一致性"></a>4. 一致性</h1><p>数据库 ACID 中的一致性对事务的要求不止包含对数据完整性以及合法性的检查，还包含应用层面逻辑的正确。</p>
+<blockquote>
+<p>Ensuring consistency for an individual transaction is the responsibility of the application programmer who codes the transaction. - Database System Concepts</p>
+</blockquote>
+<p>CAP 定理中的数据一致性，其实是说分布式系统中的各个节点中对于同一数据的拷贝有着相同的值；而 ACID 中的一致性是指数据库的规则，如果 schema 中规定了一个值必须是唯一的，那么一致的系统必须确保在所有的操作中，该值都是唯一的，</p>
+<p>Ref: <a href="https://zhuanlan.zhihu.com/p/52098102" target="_blank" rel="noopener">MySQL事务ACID实现详解</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Database/" rel="tag"># Database</a>
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/24/Knowledge Graph Note2/" rel="next" title="From Graph to Knowledge Graph – Algorithms and Applications [Note2]">
+                <i class="fa fa-chevron-left"></i> From Graph to Knowledge Graph – Algorithms and Applications [Note2]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Melody</p>
+              <p class="site-description motion-element" itemprop="description">Welcome!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-原子性：-要么全部都执行，要都不执行"><span class="nav-number">1.</span> <span class="nav-text">1. 原子性： 要么全部都执行，要都不执行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#回滚日志（undo-log）"><span class="nav-number">1.1.</span> <span class="nav-text">回滚日志（undo log）:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的状态：-Active-Commited-Failed"><span class="nav-number">1.2.</span> <span class="nav-text">事务的状态： Active, Commited, Failed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并行事务的原子性"><span class="nav-number">1.3.</span> <span class="nav-text">并行事务的原子性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-持久性"><span class="nav-number">2.</span> <span class="nav-text">2. 持久性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重做日志"><span class="nav-number">2.1.</span> <span class="nav-text">重做日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回滚日志和重做日志"><span class="nav-number">2.2.</span> <span class="nav-text">回滚日志和重做日志</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-隔离性"><span class="nav-number">3.</span> <span class="nav-text">3. 隔离性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的隔离级别"><span class="nav-number">3.1.</span> <span class="nav-text">事务的隔离级别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隔离级别的实现"><span class="nav-number">3.2.</span> <span class="nav-text">隔离级别的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#锁"><span class="nav-number">3.2.1.</span> <span class="nav-text">锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间戳-Timestamp"><span class="nav-number">3.2.2.</span> <span class="nav-text">时间戳 Timestamp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多版本和快照隔离：-MVCC"><span class="nav-number">3.2.3.</span> <span class="nav-text">多版本和快照隔离： MVCC</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-一致性"><span class="nav-number">4.</span> <span class="nav-text">4. 一致性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Melody</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
