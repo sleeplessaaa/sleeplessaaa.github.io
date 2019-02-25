@@ -332,13 +332,10 @@
 
       
         
-          
-          Part3. Graph Representation LearningProblem: structural feature engineering over the graph is expensive.=&gt; Graph Representation Learning aimed to learn latent(潜在的) feature matrix
-
-Representation learning for graph mining?The goal is to map each node into a latent low-dimensional space such that network structure information is encoded into distributional node representations.
-
-1. Skip-gram base
-          ...
+          <h2 id="Part3-Graph-Representation-Learning"><a href="#Part3-Graph-Representation-Learning" class="headerlink" title="Part3. Graph Representation Learning"></a>Part3. Graph Representation Learning</h2><p>Problem: structural feature engineering over the graph is expensive.<br>=&gt; Graph Representation Learning aimed to learn <strong>latent</strong>(潜在的) feature matrix</p>
+<blockquote>
+<p>Representation learning for graph mining?<br>The goal is to map each node into a latent low-dimensional space such that network structure information is encoded into distributional node representations.</p>
+</blockquote>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/02/24/Knowledge Graph Note2/#more" rel="contents">
@@ -462,7 +459,25 @@ Representation learning for graph mining?The goal is to map each node into a lat
 
       
         
-          <h2 id="Part1-Introduction-and-Overview"><a href="#Part1-Introduction-and-Overview" class="headerlink" title="Part1. Introduction and Overview"></a>Part1. Introduction and Overview</h2><h2 id="Part2-Graph-Properties-and-Applications"><a href="#Part2-Graph-Properties-and-Applications" class="headerlink" title="Part2. Graph Properties and Applications"></a>Part2. Graph Properties and Applications</h2>
+          <h2 id="Part1-Introduction-and-Overview"><a href="#Part1-Introduction-and-Overview" class="headerlink" title="Part1. Introduction and Overview"></a>Part1. Introduction and Overview</h2><h2 id="Part2-Graph-Properties-and-Applications"><a href="#Part2-Graph-Properties-and-Applications" class="headerlink" title="Part2. Graph Properties and Applications"></a>Part2. Graph Properties and Applications</h2><h3 id="1-Graph-Basics"><a href="#1-Graph-Basics" class="headerlink" title="1. Graph Basics"></a>1. Graph Basics</h3><h4 id="Degree"><a href="#Degree" class="headerlink" title="Degree"></a>Degree</h4><p>Degree in Microsoft Academic Graph(MAG):</p>
+<ul>
+<li><p>Author collaboration graph(undirected graph)</p>
+<blockquote>
+<p>Degree represents the number of collaborators each author has.</p>
+</blockquote>
+</li>
+<li><p>Paper citation graph(directed graph)</p>
+<blockquote>
+<p>In-degree represents the number of citations each paper collects.<br>Out-degree represents the number of references each paper covers.</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>Institution collaboration graph</li>
+<li>Institution citation graph</li>
+<li>Field-of-study citation graph</li>
+<li>Venue citation graph</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/02/23/Knowledge Graph Note/#more" rel="contents">
@@ -535,7 +550,7 @@ Representation learning for graph mining?The goal is to map each node into a lat
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/23/KnowledgeGraph-Note2/" itemprop="url">Reading Notes1-Mining Knowledge Graphs from Text</a></h1>
+                <a class="post-title-link" href="/2019/02/23/KnowledgeGraph-Note2/" itemprop="url">Reading Notes2-Mining Knowledge Graphs from Text</a></h1>
         
 
         <div class="post-meta">
@@ -586,14 +601,10 @@ Representation learning for graph mining?The goal is to map each node into a lat
 
       
         
-          
-          Part 2: Knowledge Extraction from TextNLP(Neuro-linguistic programming) + Information Extraction
-Breaking it down
-
-1) Tokenization &amp; Sentence Splitting2) Tagging the Parts of Speech3) Detecting Named Entities4) Dependency Parsing
-Ref: 【ReadingNotes】知识图谱导学 Knowledge Graph Tutorial - Part 2
-
-          
+          <h2 id="Part-2-Knowledge-Extraction-from-Text"><a href="#Part-2-Knowledge-Extraction-from-Text" class="headerlink" title="Part 2: Knowledge Extraction from Text"></a>Part 2: Knowledge Extraction from Text</h2><h3 id="NLP-Neuro-linguistic-programming-Information-Extraction"><a href="#NLP-Neuro-linguistic-programming-Information-Extraction" class="headerlink" title="NLP(Neuro-linguistic programming) + Information Extraction"></a>NLP(Neuro-linguistic programming) + Information Extraction</h3><blockquote>
+<p>Breaking it down</p>
+</blockquote>
+<p>1) Tokenization &amp; Sentence Splitting<br>2) Tagging the Parts of Speech<br>3) Detecting Named Entities<br>4) Dependency Parsing</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/02/23/KnowledgeGraph-Note2/#more" rel="contents">
@@ -717,23 +728,13 @@ Ref: 【ReadingNotes】知识图谱导学 Knowledge Graph Tutorial - Part 2
 
       
         
-          
-          Part 1 Knowledge Graph Primer
-
-What is a Knowledge Graph?
-
-
-Knowledge Graph = Entities + Relationships + Attributes
-Popular Knowledge Graphs(General): Google Knowledge Graph, Microsofy Satori Knowledge GraphDomain Specific Knowledge Graphs: Microsoft Academic Graph, Linkedin Economic Graph, Common Sense Knowledge Graph
-
-
-Why Knowledge Graph Important? 
-
-
-For Humans:
-
-Help organize world’s informat
-          ...
+          <h2 id="Part-1-Knowledge-Graph-Primer"><a href="#Part-1-Knowledge-Graph-Primer" class="headerlink" title="Part 1 Knowledge Graph Primer"></a>Part 1 Knowledge Graph Primer</h2><blockquote>
+<ol>
+<li>What is a Knowledge Graph?</li>
+</ol>
+</blockquote>
+<p>Knowledge Graph = Entities + Relationships + Attributes</p>
+<p><strong>Popular Knowledge Graphs(General)</strong>: Google Knowledge Graph, Microsofy Satori Knowledge Graph<br><strong>Domain Specific Knowledge Graphs</strong>: Microsoft Academic Graph, Linkedin Economic Graph, Common Sense Knowledge Graph<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/02/20/KnowledgeGraph-Note1/#more" rel="contents">
@@ -857,17 +858,7 @@ Help organize world’s informat
 
       
         
-          
-          Refer: https://zhuanlan.zhihu.com/p/30044692
-1. Git原理workspace: 工作区Index/Stage: 暂存区Repository：仓库区（或本地仓库）Remote：远程仓库
-2. SVN和Git的区别？SVN： 集中式版本控制系统，版本库集中放在中央服务器。Git: 分布式版本控制系统，没有中央服务器。
-3. 操作一、创建版本库repository版本库又名仓库，可以简单的理解一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改，删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻还可以将文件”还原”。git init 把指定目录变成git可以管理的仓库
-
-把文件添加到版本库中
-
-
-1.使用命令 git add readme.txt添加到暂存区里面去2.用命令 git commit告诉Git，把文件
-          ...
+          <h3 id="1-Git原理"><a href="#1-Git原理" class="headerlink" title="1. Git原理"></a>1. Git原理</h3><p>workspace: 工作区<br>Index/Stage: 暂存区<br>Repository：仓库区（或本地仓库）<br>Remote：远程仓库</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/02/19/github/#more" rel="contents">
@@ -991,17 +982,8 @@ Help organize world’s informat
 
       
         
-          
-          Refer: Microsoft doc
-声明和使用变量字符串文本以 $ 字符开头，后接左双引号字符。 $ 符号和引号字符之间不能有空格。 则可以在大括号之间的字符串内包括变量。
-如： Console.WriteLine($”Hello {aFriend}”);
-Console.WriteLine($”The name {firstFriend} has {firstFriend.Length} letters.”);
-字符串Trim(), TrimStart(), TrimEnd(), 剪裁前导或尾随空格
-Replace(): 搜索子字符串，替换其他文本
-大小写：ToUpper(), ToLower()
-搜索字符串： Contains(), StartsWith(), EndsWith()
-整数运算限值int max = int.MaxValue;int min = int.MinVal
-          ...
+          <h4 id="声明和使用变量"><a href="#声明和使用变量" class="headerlink" title="声明和使用变量"></a>声明和使用变量</h4><p>字符串文本以 <code>$</code> 字符开头，后接左双引号字符。 <code>$</code> 符号和引号字符之间不能有空格。 则可以在大括号之间的字符串内包括变量。</p>
+<p>如： Console.WriteLine($”Hello {aFriend}”);<br>Console.WriteLine($”The name {firstFriend} has {firstFriend.Length} letters.”);</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/02/09/c-学习-1/#more" rel="contents">
